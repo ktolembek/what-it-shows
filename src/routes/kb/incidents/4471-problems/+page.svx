@@ -1,0 +1,67 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: Kenessary Tolembek
+status: open
+reviewed: 2026-10-29
+signature: Kenessary Tolembek
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const repo = 'https://github.com/ktolembek/what-it-shows/issues';
+  const filed = {
+    parser: { label: 'issue 1', href: `${repo}/1` },
+    hint: { label: 'issue 2', href: `${repo}/2` },
+    'one-day': { label: 'issue 3', href: `${repo}/3` },
+  };
+</script>
+
+[#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. The reports merged into it
+describe three problems. The queued parser fix closes the first one only.
+
+<Callout kind="warn">
+Fixing the parser leaves two problems open: the booking-v3 date hint, and dates that move by one day.
+Each now has a ticket of its own.
+</Callout>
+
+## The problems
+
+<ProblemTable ticket={4471} {filed} />
+
+1. **`parser`, the shared parser reads dates month first** ([issue 1](https://github.com/ktolembek/what-it-shows/issues/1)).
+   Every tenant on file writes the day first. Their dates come out with day and month swapped.
+   This is what #4471 describes, and what its queued fix is for.
+2. **`hint`, the booking-v3 form tells people to type month first** ([issue 2](https://github.com/ktolembek/what-it-shows/issues/2)).
+   The form prints `MM/DD/YYYY` under its date field. People type what it says, and the form reads
+   the date day first. The parser is not involved, so the parser fix does not touch it. Only
+   reports that came in through the form, from tenants on booking-v3.
+3. **`one-day`, dates move by one day** ([issue 3](https://github.com/ktolembek/what-it-shows/issues/3)).
+   These reports describe no swap: Tuesday becomes Monday, or two recipients see different days.
+   That points at time zones or the day boundary, not at date order. The desk already listed them
+   in `desk-notes.json`.
+
+## Why they stayed merged
+
+- **Intake tags guess from the browser.** `meta.intakeTag` comes from the reporter's browser locale,
+  not from the tenant. It says `parser` for most hint reports and `hint` for some parser reports.
+  The counts above come from the tenant's locale and booking form (`causes.ts`), not from the tag.
+- **Subjects don't tell them apart.** The same subject lines turn up in all three problems,
+  so matching on subject ([decision 0001](/kb/decisions/0001-dedupe-by-subject)) cannot split them.
+- **The old table counts one-day moves as `parser`.** On the #4471 page they are only a footnote,
+  and the hint row says "no ticket of its own". Here is that table, unchanged:
+
+<CauseTable ticket={4471} />
+
+## For the desk
+
+- Close each issue on its own fix. A queued parser fix does not close #4471's other two problems.
+- New reports from booking-v3 form users go to issue 2, even when intake tags them `parser`.
+- A report where the day moves by one goes to issue 3. Add its id to `oneDayMove` in
+  `desk-notes.json`, and this page counts it.
+
+<RenderStamp {signature} />
