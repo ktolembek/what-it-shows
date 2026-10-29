@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>#4471 · three problems, not one · support kb</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#6b6a66;--line:#e3e0d8;--accent:#2f6f5e;--warn:#b4501f;--warn-bg:#fbeee6;--note-bg:#eef5f2;--mono:ui-monospace,Menlo,monospace}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif}
+.kb{max-width:760px;margin:0 auto;padding:2rem 16px 4rem}
+.kb table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}
+.kb th,.kb td{border-bottom:1px solid var(--line);padding:.35rem .5rem;text-align:left}
+.kb code{font-family:var(--mono);font-size:.88em}
+.kb a{color:var(--accent)}
+.tags{color:var(--muted);font-size:.85em}
+aside.warn{border-left:4px solid var(--warn);padding:.5rem 1rem;margin:1rem 0;background:var(--warn-bg)}
+.wrong td{background:var(--warn-bg)}.wrong td:last-child{color:var(--warn);font-weight:600}
+.stamp{margin:2rem 0 0;font:.85rem var(--mono);color:var(--muted)}.stamp b{color:var(--accent)}
+</style></head><body>
+<div class="kb">
+<header><a href="/kb">support desk · kb</a>
+<h1>#4471 · three problems, not one</h1>
+<p>owner <b>Kenessary Tolembek</b> · status open · reviewed 2026-10-29</p></header>
+<main>
+<p><a href="/kb/incidents/4471">#4471</a> is marked known: one issue, one fix queued. The reports merged into it describe three problems. The queued parser fix closes the first one only.</p>
+<aside class="warn">Fixing the parser leaves two problems open: the booking-v3 date hint, and dates that move by one day. Each now has a ticket of its own.</aside>
+<h2>The problems</h2>
+<p><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems</p>
+<table><thead><tr><th>problem</th><th>reports</th><th>intake tagged them</th><th>tenants</th><th>seen</th><th>filed as</th></tr></thead>
+<tbody><tr><td><code>parser</code></td><td>374</td><td class="tags">parser ×351 · hint ×23</td><td>11</td><td>2026-04-01 → 2026-10-04</td><td><a href="https://github.com/ktolembek/what-it-shows/issues/1">issue 1</a></td></tr>
+<tr><td><code>hint</code></td><td>33</td><td class="tags">hint ×18 · parser ×15</td><td>3</td><td>2026-04-17 → 2026-09-22</td><td><a href="https://github.com/ktolembek/what-it-shows/issues/2">issue 2</a></td></tr>
+<tr><td><code>one-day</code></td><td>5</td><td class="tags">parser ×5</td><td>5</td><td>2026-04-02 → 2026-10-04</td><td><a href="https://github.com/ktolembek/what-it-shows/issues/3">issue 3</a></td></tr></tbody>
+<tfoot><tr><td>total</td><td>412</td><td colspan="4"></td></tr></tfoot></table>
+<h2>Cause table (unchanged from #4471 page)</h2>
+<p><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p>
+<table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead>
+<tbody><tr class=""><td><code>parser</code></td><td>379</td><td class="tags">parser ×356 · hint ×23</td><td>11</td><td>2026-04-01 → 2026-10-04</td><td>#4471</td></tr>
+<tr class="wrong"><td><code>hint</code></td><td>33</td><td class="tags">hint ×18 · parser ×15</td><td>3</td><td>2026-04-17 → 2026-09-22</td><td>not this ticket — no ticket of its own</td></tr></tbody></table>
+<p class="tags">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p>
+<p class="stamp">desk ref <b>DR-94HV-PQE9</b></p>
+</main>
+<footer>Pages are written by people. Tables and charts are built from data at render time.</footer>
+</div></body></html>

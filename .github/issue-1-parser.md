@@ -1,14 +1,13 @@
-**Reports covered: 374** of the 412 merged into #4471.
+Split from #4471 (support desk). **Reports: 379** of the 412 merged into #4471, as the desk counts them (CauseTable, cause `parser`).
 
-## Problem
-The shared parser reads every date month first. All 11 tenants write dates day first (`Intl` for each tenant locale), so dates with day ≤ 12 come out with day and month swapped (for example 7 April becomes 4 July).
+**Problem.** The shared parser reads every date month first. All 11 tenants write the day first, so day and month trade places when the day is 12 or less.
 
-## Scope
-- Tenants: all 11 on file
-- Received: 2026-04-01 → 2026-10-04
-- Channels: app, email, and form reports from booking-v2 tenants (hint `DD/MM/YYYY`)
+**Example reports.**
+- R-41203 (lantern.row, app): "Booked for 2 December. The invite says 12 February."
+- R-41206 (long.table, app): "Second time this month: 4 March turned into 3 April."
 
-## How it was counted
-Unique ids from `reports-4471.json`. Excludes booking-v3 form reports (issue 2) and the five `oneDayMove` ids in `desk-notes.json` (issue 3). Count uses tenant locale + form from `causes.ts`, not `meta.intakeTag`.
+**Scope.** 11 tenants; app ×204, email ×150, booking-v2 form ×25. First report 2026-04-01, last 2026-10-04.
 
-The fix queued for #4471 covers this problem only.
+**How the count was made.** Unique ids from `reports-4471.json` (412 merged into #4471), grouped by `causeOf()` in `src/lib/kb/causes.ts` (cause `parser`). Five of these are read as a one-day move in `desk-notes.json` and have their own ticket (#3); they remain in this CauseTable row as exported.
+
+This is the bug #4471 describes; the queued parser fix is for this cause.
