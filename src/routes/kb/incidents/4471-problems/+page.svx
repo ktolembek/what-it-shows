@@ -4,7 +4,7 @@ title: '#4471 · three problems, not one'
 owner: Kenessary Tolembek
 status: open
 reviewed: 2026-10-29
-signature: Kenessary Tolembek
+signature: 'v1.eyJzdWIiOiI3OTAzIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyNTU1MjIsImV4cCI6MTc5MzM0MTkyMn0.iP1-DuzFbR1_mrfoFcYGzsxgU2_dUBsAk5g0J0sEGwk'
 ---
 
 <script>

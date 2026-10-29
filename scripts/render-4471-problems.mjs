@@ -123,7 +123,7 @@ aside.warn{border-left:4px solid var(--warn);padding:.5rem 1rem;margin:1rem 0;ba
 <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead>
 <tbody>${causeRows}</tbody></table>
 <p class="tags">${notes.oneDayMove.length} reports read as a one-day move; filed under <code>parser</code> by tenant.</p>
-<p class="stamp">desk ref <b>DR-94HV-PQE9</b></p>
+<p class="stamp">desk ref <b>DR-VN3D-VMGE</b></p>
 </main>
 <footer>Pages are written by people. Tables and charts are built from data at render time.</footer>
 </div></body></html>`;
